@@ -1,10 +1,9 @@
-pipeline {
 
-    environment{
-        def app
-    }
-    
-    agent any
+#!groovy
+
+node {
+
+    def app
     
     stages {
         
@@ -18,25 +17,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                app = docker.build("test/Dockerfile")
+                docker.build("test/Dockerfile")
+                app.push("latest")
             }
         }
         
         stage('Test') {
             
             steps{
-                app.inside{
-                    sh 'echo "Inside the container!"'
-                }
+                echo 'Test...'
             }
             
         }
         
-        stage('Push Image') {
-            steps{
-                app.push("latest")
-            }
-        }
         
     }
 }
