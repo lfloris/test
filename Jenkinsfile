@@ -12,7 +12,7 @@ node {
         stage('Build') {
 
                 echo 'Building..'
-                docker.build("test/Dockerfile")
+                docker.build("mypython")
                 app.push("latest")
 
         }
