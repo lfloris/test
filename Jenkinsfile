@@ -2,9 +2,7 @@
 node {
 
     def app
-    
-    stages {
-        
+
         stage('Clone Repository'){
             steps{
                 echo "Cloning repository..."
@@ -27,7 +25,5 @@ node {
             }
             
         }
-        
-        
-    }
+
 }
