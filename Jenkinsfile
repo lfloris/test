@@ -1,8 +1,10 @@
 pipeline {
 
-    agent any
+    environment{
+        def app
+    }
     
-    def app
+    agent any
     
     stages {
         
@@ -16,21 +18,24 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                
                 app = docker.build("test/Dockerfile")
             }
         }
         
         stage('Test') {
-        
-            app.inside{
-                sh 'echo "Inside the container!"'
+            
+            steps{
+                app.inside{
+                    sh 'echo "Inside the container!"'
+                }
             }
             
         }
         
         stage('Push Image') {
-            app.push("latest")
+            steps{
+                app.push("latest")
+            }
         }
         
     }
