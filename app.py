@@ -13,7 +13,7 @@ def hello():
     html = "<h3>Hello {name}!</h3>" \
            "<b>Hostname:</b> {hostname}<br/>"
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname())
-    return 'My hostname is %s'
+    return 'My updated hostname is %s'
     return 'I have just updated this app with a CICD pipeline!'
 
 if __name__ == "__main__":
