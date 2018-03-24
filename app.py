@@ -14,6 +14,7 @@ def hello():
            "<b>Hostname:</b> {hostname}<br/>"
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname())
     return 'My hostname is %s'
+    return 'I have just updated this app with a CICD pipeline!'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
