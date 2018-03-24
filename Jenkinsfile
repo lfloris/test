@@ -50,10 +50,11 @@ podTemplate(label: 'mypod',
                     # No deployment to update
                     echo 'No deployment to update'
                     exit 1
+                else
+                    # Update Deployment
+                    kubectl deployment update \${REGISTRY}/\${NAMESPACE}/mypython:latest \${DEPLOYMENT}
+                    kubectl rollout status \${DEPLOYMENT}
                 fi
-                # Update Deployment
-                kubectl set image \${DEPLOYMENT} hello=\${REGISTRY}/\${NAMESPACE}/mypython:latest
-                kubectl rollout status \${DEPLOYMENT}
                 """
             }
         }
