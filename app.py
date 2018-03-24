@@ -12,7 +12,7 @@ def hello():
 
     html = "<h3>Hello {name}!</h3>" \
            "<b>Hostname:</b> {hostname}<br/> \
-           <b>I have just updated this app with a CICD pipeline!</b> "
+           <b>I have just updated this app with an automated CICD pipeline running a poll every 2 minutes!</b> "
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname())
     return 'My hostname is %s'
 
