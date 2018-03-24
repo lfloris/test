@@ -42,7 +42,7 @@ podTemplate(label: 'mypod',
                 set +e
                 NAMESPACE=`cat /var/run/configs/registry-config/namespace`
                 REGISTRY=`cat /var/run/configs/registry-config/registry`
-                DEPLOYMENT=`kubectl get deployments -l app=mypython,micro=web-bff -o name`
+                DEPLOYMENT=`kubectl get deployments -l app=python -o name`
                 kubectl get \${DEPLOYMENT}
                 if [ \${?} -ne "0" ]; then
                     # No deployment to update
