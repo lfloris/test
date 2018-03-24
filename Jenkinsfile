@@ -30,10 +30,10 @@ podTemplate(label: 'mypod',
                 DOCKER_USER=`cat /var/run/secrets/registry-account/username`
                 DOCKER_PASSWORD=`cat /var/run/secrets/registry-account/password`
                 
-                docker tag \${REGISTRY}/\${NAMESPACE}/mypython:${env.BUILD_NUMBER} \${REGISTRY}/\${NAMESPACE}/mypython:latest
+                /*docker tag \${REGISTRY}/\${NAMESPACE}/mypython:${env.BUILD_NUMBER} \${REGISTRY}/\${NAMESPACE}/mypython:latest*/
                 docker login -u=\${DOCKER_USER} -p=\${DOCKER_PASSWORD} \${REGISTRY}
                 set -x
-                docker push \${REGISTRY}/\${NAMESPACE}/mypython:latest
+                docker push \${REGISTRY}/\${NAMESPACE}/mypython:${env.BUILD_NUMBER}
                 """
             }
         }
@@ -52,7 +52,7 @@ podTemplate(label: 'mypod',
                     exit 1
                 else
                     # Update Deployment
-                    kubectl set image \${DEPLOYMENT} hello=\${REGISTRY}/\${NAMESPACE}/mypython:latest
+                    kubectl set image \${DEPLOYMENT} hello=\${REGISTRY}/\${NAMESPACE}/mypython:${env.BUILD_NUMBER}
                     kubectl rollout status \${DEPLOYMENT}
                 fi
                 """
