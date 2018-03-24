@@ -31,7 +31,9 @@ podTemplate(label: 'mypod',
                 DOCKER_PASSWORD=`cat /var/run/secrets/registry-account/password`
                 docker login -u=\${DOCKER_USER} -p=\${DOCKER_PASSWORD} \${REGISTRY}
                 set -x
+                
                 docker push \${REGISTRY}/\${NAMESPACE}/mypython:${env.BUILD_NUMBER}
+                docker push \${REGISTRY}/\${NAMESPACE}/mypython:latest
                 """
             }
         }
