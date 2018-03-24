@@ -52,7 +52,7 @@ podTemplate(label: 'mypod',
                     exit 1
                 fi
                 # Update Deployment
-                kubectl set image \${DEPLOYMENT} mypython=\${REGISTRY}/\${NAMESPACE}/mypython:latest
+                kubectl set image \${DEPLOYMENT} hello=\${REGISTRY}/\${NAMESPACE}/mypython:latest
                 kubectl rollout status \${DEPLOYMENT}
                 """
             }
